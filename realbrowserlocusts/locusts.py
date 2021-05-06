@@ -15,7 +15,7 @@ class RealBrowserLocust(User):
     abstract = True
 
     client = None
-    timeout = 30
+    timeout = 300
     screen_width = None
     screen_height = None
     proxy_server = None
@@ -62,6 +62,7 @@ class HeadlessChromeLocust(RealBrowserLocust):
         options = webdriver.ChromeOptions()
         options.add_argument('headless')
         options.add_argument('--no-sandbox')
+        options.add_argument('--disable-gpu')
         options.add_argument('--disable-dev-shm-usage')
         options.add_argument('window-size={}x{}'.format(
             self.screen_width, self.screen_height

@@ -18,10 +18,10 @@ def wrap_for_locust(request_type, name, func, *args, **kwargs):
     """
     try:
         start_time = time.time()
-        print('try' * 200)
+        print('try')
         result = func(*args, **kwargs)
     except Exception as event_exception:
-        print('except' * 200)
+        print('except')
         print(event_exception)
         total_time = int((time.time() - start_time) * 1000)
         events.request_failure.fire(
@@ -33,7 +33,7 @@ def wrap_for_locust(request_type, name, func, *args, **kwargs):
         )
         raise StopUser()
     else:
-        print('else' * 200)
+        print('else')
         total_time = int((time.time() - start_time) * 1000)
         events.request_success.fire(
             request_type=request_type,
@@ -80,12 +80,12 @@ class RealBrowserClient(object):
             catched, logged to locust as a failure and a StopUser exception
             is raised.
         """
-        print('wrap_for_locust' * 200)
+        print('wrap_for_locust')
         return wrap_for_locust(request_type, message, func, *args, **kwargs)
 
     def __getattr__(self, attr):
         """
         Forward all messages this client doesn't understand to it's webdriver
         """
-        print('__getattr__' * 200)
+        print('__getattr__')
         return getattr(self.driver, attr)
