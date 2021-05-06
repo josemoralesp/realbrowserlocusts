@@ -71,7 +71,7 @@ class HeadlessChromeLocust(RealBrowserLocust):
             _LOGGER.info('Using proxy: ' + self.proxy_server)
             options.add_argument('proxy-server={}'.format(self.proxy_server))
         #driver = webdriver.Chrome(chrome_options=options)
-        driver = webdriver.Remote(command_executor='http://192.168.1.85:3000/webdriver', chrome_options=options)
+        driver = webdriver.Remote(command_executor='http://192.168.1.85:3000/webdriver', options=options)
         _LOGGER.info('Actually trying to run headless Chrome')
         self.client = RealBrowserClient(
             driver,
