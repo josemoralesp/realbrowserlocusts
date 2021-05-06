@@ -40,6 +40,9 @@ class ChromeLocust(RealBrowserLocust):
     def __init__(self, *args, **kwargs):
         super().__init__(*args, **kwargs)
         options = webdriver.ChromeOptions()
+        options.add_argument('--no-sandbox')
+        options.add_argument('--disable-gpu')
+        options.add_argument('--disable-dev-shm-usage')
         if self.proxy_server:
             _LOGGER.info('Using proxy: ' + self.proxy_server)
             options.add_argument('proxy-server={}'.format(self.proxy_server))
