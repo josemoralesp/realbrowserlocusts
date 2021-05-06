@@ -22,6 +22,7 @@ def wrap_for_locust(request_type, name, func, *args, **kwargs):
         result = func(*args, **kwargs)
     except Exception as event_exception:
         print('except' * 200)
+        print(event_exception)
         total_time = int((time.time() - start_time) * 1000)
         events.request_failure.fire(
             request_type=request_type,
