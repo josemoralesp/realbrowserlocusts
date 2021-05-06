@@ -62,6 +62,7 @@ class HeadlessChromeLocust(RealBrowserLocust):
         options = webdriver.ChromeOptions()
         options.add_argument('--headless')
         options.add_argument('--no-sanbox')
+        options.add_argument('--remote-debugging-port=9222')
         options.add_argument('window-size={}x{}'.format(
             self.screen_width, self.screen_height
         ))
